@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Footer from './components/Footer';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import Search from './components/Search';
 import {
   BrowserRouter,
   Routes,
@@ -23,6 +24,7 @@ root.render(
       <Route path="signup" element={<Signup />} />
       <Route path="login" element={<Login />} />
       <Route path="myprofile" element={<MyProfile />} />
+      <Route path="search" element={<Search />} />
     </Routes><Footer />
   </BrowserRouter>
 </>,root
