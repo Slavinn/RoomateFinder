@@ -40,6 +40,7 @@ CREATE TABLE `reviews` (
 `sender_name` varchar(50) NOT NULL,
 `star` int(1) not null,
 `user_id` int not null,
+`date` date,
 primary key(`review_id`),
 foreign key (`user_id`) references users(`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -50,9 +51,9 @@ foreign key (`user_id`) references users(`user_id`)
 
 INSERT INTO `reviews` 
 VALUES 
-(1, 'Great roomate', 'bob', 5, 1),
-(2, 'Great roomate', 'emma', 4, 1),
-(3, 'bad roomate', 'john', 2, 2),
-(4, 'bad roomate', 'emma', 1, 2),
-(5, 'Clean roomate', 'john', 5, 3),
-(6, 'Clean roomate', 'bill', 4, 3)
+(1, 'Great roomate', 'bob', 5, 1, "2019-04-27"),
+(2, 'Great roomate', 'emma', 4, 1, "2019-04-27"),
+(3, 'bad roomate', 'john', 2, 2, "2019-04-27"),
+(4, 'bad roomate', 'emma', 1, 2, "2019-04-27"),
+(5, 'Clean roomate', 'john', 5, 3, "2019-04-27"),
+(6, 'Clean roomate', 'bill', 4, 3, "2019-04-27")
