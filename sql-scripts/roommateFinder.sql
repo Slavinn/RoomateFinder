@@ -25,7 +25,7 @@ PRIMARY KEY (`user_id`)
 INSERT INTO `users` 
 VALUES 
 (1, 'john','smith', 'john.smith@email.com', '{noop}test123', 'my name is john smith'),
-(2, 'bob','wall', 'emma.jackson@email.com', '{noop}test123', 'my name is bob wall'),
+(2, 'bob','wall', 'bob.wall@email.com', '{noop}test123', 'my name is bob wall'),
 (3, 'emma','jackson', 'emma.jackson@email.com', '{noop}test123', 'my name is emma jackson');
 
 
