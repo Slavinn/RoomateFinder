@@ -3,21 +3,22 @@ import TutorialDataService from "../TutorialDataService";
 
 export default function Signup(){
 
-
     function sendForm(){
-        console.log("button clicked.")
-        if(!(firstName.value&&lastName.value&&password.value&&password_con.value&&email.value))
-        return console.log("Empty fields")
-        else if(password.value!==password_con.value)
-        return console.log("Passwords don't match")
-        else{
-    return TutorialDataService.createUser({"firstName":firstName.value,"lastName":lastName.value,"email":email.value,"password":password.value,"summary":""})}
-    }
-    let firstName = document.getElementById("fname");
+        let firstName = document.getElementById("fname");
     let lastName = document.getElementById("lname");
     let email = document.getElementById("email");
     let password = document.getElementById("password");
     let password_con = document.getElementById("password-con");
+        console.log("button clicked.")
+        if(!(firstName.value&&lastName.value&&password.value&&password_con.value&&email.value))
+        return alert("Empty fields")
+        else if(password.value!==password_con.value)
+        return alert("Passwords don't match")
+        else{
+            alert("User created successfully!")
+    return TutorialDataService.createUser({"firstName":firstName.value,"lastName":lastName.value,"email":email.value,"password":password.value,"summary":""})}
+    }
+    
 
 
     return(<div><h1 style={{"textAlign":"center"}}>Signup Form</h1>
