@@ -1,7 +1,7 @@
-DROP DATABASE  IF EXISTS `roomate_finder`;
+DROP DATABASE  IF EXISTS `roommate_finder`;
 
-CREATE DATABASE  IF NOT EXISTS `roomate_finder`;
-USE `roomate_finder`;
+CREATE DATABASE  IF NOT EXISTS `roommate_finder`;
+USE `roommate_finder`;
 
 --
 -- Table structure for table `users`
@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
 `user_id` int not null auto_increment,
 `first_name` varchar(50) not null,
-`lastn_name` varchar(50) not null,
+`last_name` varchar(50) not null,
 `email` varchar(50) not null,
 `password` varchar(50) not null,
 `summary` varchar(50) not null,
@@ -51,9 +51,9 @@ foreign key (`user_id`) references users(`user_id`)
 
 INSERT INTO `reviews` 
 VALUES 
-(1, 'Great roomate', 'bob', 5, 1, "2019-04-27"),
-(2, 'Great roomate', 'emma', 4, 1, "2019-04-27"),
-(3, 'bad roomate', 'john', 2, 2, "2019-04-27"),
-(4, 'bad roomate', 'emma', 1, 2, "2019-04-27"),
-(5, 'Clean roomate', 'john', 5, 3, "2019-04-27"),
-(6, 'Clean roomate', 'bill', 4, 3, "2019-04-27")
+(1, 'Great roommate', 'bob', 5, 1, "2019-04-27"),
+(2, 'Great roommate', 'emma', 4, 1, "2019-04-27"),
+(3, 'bad roommate', 'john', 2, 2, "2019-04-27"),
+(4, 'bad roommate', 'emma', 1, 2, "2019-04-27"),
+(5, 'Clean roommate', 'john', 5, 3, "2019-04-27"),
+(6, 'Clean roommate', 'bill', 4, 3, "2019-04-27")
