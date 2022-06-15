@@ -30,6 +30,6 @@ root.render(
       <Route path="search" element={<Search />} />
     </Routes><Footer />
   </BrowserRouter>
-</>,root
+</>
 );
 
