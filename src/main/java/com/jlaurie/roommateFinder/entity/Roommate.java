@@ -6,11 +6,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD:src/main/java/com/jlaurie/roommateFinder/entity/Roommate.java
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
-=======
-@JsonIgnoreProperties({ "hibernateLazyInitializer" })
->>>>>>> main:roommateFinder/src/main/java/com/jlaurie/roommateFinder/entity/Roommate.java
+
 @Entity
 @Table(name = "users")
 public class Roommate {
@@ -34,25 +31,16 @@ public class Roommate {
     @Column(name = "summary")
     private String summary;
 
-<<<<<<< HEAD:src/main/java/com/jlaurie/roommateFinder/entity/Roommate.java
-    @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval=true)
-    @JoinColumn(name="user_id")
-=======
-    @OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL }, orphanRemoval = true
-    )
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL }, orphanRemoval = true)
     @JoinColumn(name="user_id")
     @JsonIgnoreProperties({ "roommate" })
->>>>>>> main:roommateFinder/src/main/java/com/jlaurie/roommateFinder/entity/Roommate.java
     private List<Review> reviews;
 
     public Roommate() {
     }
 
     public Roommate(String firstName, String lastName, String email, String password, String summary) {
-<<<<<<< HEAD:src/main/java/com/jlaurie/roommateFinder/entity/Roommate.java
-=======
-        this.id=1;
->>>>>>> main:roommateFinder/src/main/java/com/jlaurie/roommateFinder/entity/Roommate.java
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -68,11 +56,8 @@ public class Roommate {
         this.reviews = reviews;
     }
 
-<<<<<<< HEAD:src/main/java/com/jlaurie/roommateFinder/entity/Roommate.java
-    public void addReview( Review theReview) {
-=======
+
     public void addReview(Review theReview) {
->>>>>>> main:roommateFinder/src/main/java/com/jlaurie/roommateFinder/entity/Roommate.java
         if (reviews == null) {
             reviews = new ArrayList<>();
         }
