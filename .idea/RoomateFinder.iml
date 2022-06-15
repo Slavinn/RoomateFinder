@@ -14,13 +14,9 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-<<<<<<< HEAD
-        <datasource-mapping />
-=======
         <datasource-mapping>
           <factory-entry name="RoomateFinder" value="22c61d7e-be64-4a03-93b3-67716bc6b23f" />
         </datasource-mapping>
->>>>>>> main
         <naming-strategy-map />
       </configuration>
     </facet>
