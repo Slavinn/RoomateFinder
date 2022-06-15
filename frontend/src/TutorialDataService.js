@@ -5,10 +5,17 @@ import axios from "axios";
 
 class TutorialDataService {
   getAllUsers() {
+<<<<<<< HEAD
+    return http.get("/roommates");
+  }
+  getRoommateById(id) {
+    return http.get(`/roommates/${id}`);
+=======
     return axios.get("http://localhost:8080/api/roommates");
   }
   getRoommateById(id) {
     return axios.get(`http://localhost:8080/api/roommates/${id}`,{});
+>>>>>>> main
   }
   createUser(data) {
     return axios.post('http://localhost:8080/api/roommates', data);
@@ -26,7 +33,11 @@ class TutorialDataService {
     return http.get(`/reviews/${id}`);
   }
   createReview(data) {
+<<<<<<< HEAD
+    return axios.post('/review', data);
+=======
     return axios.post('http://localhost:8080/api/reviews', data);
+>>>>>>> main
   }
   updateReview(data) {
     return http.put(`/reviews`, data);

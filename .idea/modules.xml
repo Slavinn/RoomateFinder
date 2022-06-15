@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/RoomateFinder.iml" filepath="$PROJECT_DIR$/.idea/RoomateFinder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/roommateFinder.iml" filepath="$PROJECT_DIR$/roommateFinder.iml" />
     </modules>
   </component>
 </project>

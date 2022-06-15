@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@JsonIgnoreProperties({ "hibernateLazyInitializer" })
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
+
 @Entity
 @Table(name = "users")
 public class Roommate {
@@ -30,8 +31,8 @@ public class Roommate {
     @Column(name = "summary")
     private String summary;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL }, orphanRemoval = true
-    )
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL }, orphanRemoval = true)
     @JoinColumn(name="user_id")
     @JsonIgnoreProperties({ "roommate" })
     private List<Review> reviews;
@@ -40,7 +41,6 @@ public class Roommate {
     }
 
     public Roommate(String firstName, String lastName, String email, String password, String summary) {
-        this.id=1;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -55,6 +55,7 @@ public class Roommate {
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
+
 
     public void addReview(Review theReview) {
         if (reviews == null) {
