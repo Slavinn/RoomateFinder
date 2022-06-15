@@ -3,7 +3,6 @@ import TutorialDataService from "../TutorialDataService";
 
 export default function Signup(){
 
-
     function sendForm(){
         let firstName = document.getElementById("fname");
         let lastName = document.getElementById("lname");
@@ -11,13 +10,13 @@ export default function Signup(){
         let password = document.getElementById("password");
         let password_con = document.getElementById("password-con");
 
-        console.log("button clicked.")
         if(!(firstName.value&&lastName.value&&password.value&&password_con.value&&email.value))
         return alert("Empty fields")
         else if(password.value!==password_con.value)
         return alert("Passwords don't match")
         else{
-            alert("User Created successfully!")
+            alert("User created successfully!")
+
     return TutorialDataService.createUser({"firstName":firstName.value,"lastName":lastName.value,"email":email.value,"password":password.value,"summary":""})}
     }
     

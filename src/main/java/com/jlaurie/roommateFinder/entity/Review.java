@@ -10,10 +10,10 @@ import javax.persistence.*;
 public class Review {
 
     @Id
-    @Column (name = "id")
+    @Column (name = "review_id")
     private int id;
 
-    @Column (name = "text")
+    @Column (name = "review_text")
     private String review;
 
     @Column (name = "sender_name")

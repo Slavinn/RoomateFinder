@@ -40,7 +40,7 @@ public class RoommateDAOImpl implements RoommateDAO{
     public List<Roommate> selectAllRoommates() {
         Session session = entityManager.unwrap(Session.class);
 
-        org.hibernate.Query<Roommate> query = session.createQuery("from Roommate", Roommate.class);
+        Query query = session.createQuery("from Roommate",Roommate.class);
 
         return query.getResultList();
 

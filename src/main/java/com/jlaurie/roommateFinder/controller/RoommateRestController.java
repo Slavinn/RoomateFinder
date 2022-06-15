@@ -22,16 +22,14 @@ public class RoommateRestController {
 
     @PostMapping("/roommates")
     public String createRoommate(@RequestBody Roommate roommate) throws SQLException {
-
-        roommate.setId(0);
         roommateService.createRoommate(roommate);
 
         return "Created Roommate - " + roommate;
     }
 
     @GetMapping("/roommates/{roommateId}")
-    public Roommate getRoommate(@PathVariable int roommateId) {
-        Roommate roommate = roommateService.getRoommate(roommateId);
+    public Roommate getRoommate(@PathVariable String roommateId) {
+        Roommate roommate = roommateService.getRoommate(Integer.parseInt(roommateId));
 
         if (roommate == null) {
             throw new RuntimeException("Roommate ID was not found - " + roommateId);
