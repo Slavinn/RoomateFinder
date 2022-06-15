@@ -1,13 +1,18 @@
 package com.jlaurie.roommateFinder.entity;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
-@Table(name = "roommate_finder")
+@Table(name = "users")
 public class Roommate {
 
     @Id
-    @Column(name = "user_id")
+    @Column(name = "id")
     private int id;
 
     @Column(name = "first_name")
@@ -25,16 +30,34 @@ public class Roommate {
     @Column(name = "summary")
     private String summary;
 
+    @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL}, orphanRemoval=true)
+    @JoinColumn(name="user_id")
+    private List<Review> reviews;
+
     public Roommate() {
     }
 
-    public Roommate(int id, String firstName, String lastName, String email, String password, String summary) {
-        this.id = id;
+    public Roommate(String firstName, String lastName, String email, String password, String summary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.summary = summary;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public void addReview( Review theReview) {
+        if (reviews == null) {
+            reviews = new ArrayList<>();
+        }
+        reviews.add(theReview);
     }
 
     public long getId() {

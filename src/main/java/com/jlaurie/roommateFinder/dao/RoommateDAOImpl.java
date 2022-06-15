@@ -57,7 +57,7 @@ public class RoommateDAOImpl implements RoommateDAO{
     public void deleteRoommate(int id) throws SQLException {
         Session session = entityManager.unwrap(Session.class);
 
-        Query query = session.createQuery("delete using roommate id");
+        Query query = session.createQuery("delete from Roommate where id=:roommateId");
         query.setParameter("roommateId", id);
 
         query.executeUpdate();

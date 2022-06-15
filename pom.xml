@@ -8,7 +8,7 @@
 		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.jlaurie</groupId>
+	<groupId>main.java.com.jlaurie</groupId>
 	<artifactId>roommateFinder</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>roommateFinder</name>
@@ -37,6 +37,7 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

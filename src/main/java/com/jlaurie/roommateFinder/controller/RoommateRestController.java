@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class RoommateRestController {
 
     private RoommateService roommateService;
@@ -29,11 +30,11 @@ public class RoommateRestController {
     }
 
     @GetMapping("/roommates/{roommateId}")
-    public Roommate getRoommate(@PathVariable int id) {
-        Roommate roommate = roommateService.getRoommate(id);
+    public Roommate getRoommate(@PathVariable int roommateId) {
+        Roommate roommate = roommateService.getRoommate(roommateId);
 
         if (roommate == null) {
-            throw new RuntimeException("Roommate ID was not found - " + id);
+            throw new RuntimeException("Roommate ID was not found - " + roommateId);
         }
 
         return roommate;

@@ -1,19 +1,19 @@
 package com.jlaurie.roommateFinder.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.*;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Table (name = "reviews")
 public class Review {
 
     @Id
-    @Column (name = "review_id")
+    @Column (name = "id")
     private int id;
 
-    @Column (name = "review_text")
+    @Column (name = "text")
     private String review;
 
     @Column (name = "sender_name")
@@ -22,14 +22,18 @@ public class Review {
     @Column (name = "star")
     private int star;
 
+
     @Column (name = "date")
     private String date;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private Roommate roommate;
 
     public Review() {
     }
 
-    public Review(int id, String review, String user, int star, String date) {
-        this.id = id;
+    public Review( String review, String user, int star, String date) {
         this.review = review;
         this.user = user;
         this.star = star;
