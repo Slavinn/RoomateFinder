@@ -3,19 +3,21 @@ DROP DATABASE  IF EXISTS `roommate_finder`;
 CREATE DATABASE  IF NOT EXISTS `roommate_finder`;
 USE `roommate_finder`;
 
+SET FOREIGN_KEY_CHECKS = 0;
+
 --
 -- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-`user_id` int not null auto_increment,
+`id` int(11) not null auto_increment,
 `first_name` varchar(50) not null,
 `last_name` varchar(50) not null,
 `email` varchar(50) not null,
 `password` varchar(50) not null,
-`summary` varchar(50) not null,
-PRIMARY KEY (`user_id`)
+`summary` varchar(50) default null,
+PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -35,19 +37,24 @@ VALUES
 
 DROP TABLE IF EXISTS `reviews`;
 CREATE TABLE `reviews` (
-`review_id` int not null,
-`review_text` varchar(254) NOT NULL,
+`id` int not null,
+`text` varchar(254) NOT NULL,
 `sender_name` varchar(50) NOT NULL,
 `star` int(1) not null,
-`user_id` int not null,
+`user_id` int(11) default null,
 `date` date,
-primary key(`review_id`),
-foreign key (`user_id`) references users(`user_id`)
+primary key(`id`),
+
+key `FK_USER_ID_idx` (`user_id`),
+
+constraint `FK_USER` foreign key (`user_id`) references `users` (`id`)
+ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Inserting data for table `reviews`
 --
+SET FOREIGN_KEY_CHECKS = 1;
 
 INSERT INTO `reviews` 
 VALUES 
