@@ -36,7 +36,7 @@ public class ReviewRestController {
     }
 
     @PostMapping("/reviews")
-    public String saveReview(@RequestBody Review theReview) {
+    public String saveReview(@RequestBody Review theReview,@RequestParam int id) {
         reviewService.save(theReview);
 
         return "Review added";
