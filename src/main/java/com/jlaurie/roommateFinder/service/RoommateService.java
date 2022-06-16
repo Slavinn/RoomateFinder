@@ -16,4 +16,6 @@ public interface RoommateService {
     public void updateRoommate(Roommate roommate) throws SQLException;
 
     public void deleteRoommate(int id) throws SQLException;
+
+    public Roommate findByEmail(String email);
 }

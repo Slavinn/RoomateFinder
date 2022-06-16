@@ -14,8 +14,8 @@ CREATE TABLE `users` (
 `id` int(11) not null auto_increment,
 `first_name` varchar(50) not null,
 `last_name` varchar(50) not null,
-`email` varchar(50) not null,
-`password` varchar(50) not null,
+`email` varchar(50) UNIQUE not null,
+`password` varchar(64) not null,
 `summary` varchar(50) default null,
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -26,9 +26,9 @@ PRIMARY KEY (`id`)
 
 INSERT INTO `users` 
 VALUES 
-(1, 'john','smith', 'john.smith@email.com', '{noop}test123', 'my name is john smith'),
-(2, 'bob','wall', 'bob.wall@email.com', '{noop}test123', 'my name is bob wall'),
-(3, 'emma','jackson', 'emma.jackson@email.com', '{noop}test123', 'my name is emma jackson');
+(1, 'john','smith', 'john.smith@email.com', '$2a$12$M.IRrvzaUblx/tFCEUUVNe/6zqBoORo38ykxcwYkPLWQsaxcsVteG', 'my name is john smith'),
+(2, 'bob','wall', 'bob.wall@email.com', '$2a$12$M.IRrvzaUblx/tFCEUUVNe/6zqBoORo38ykxcwYkPLWQsaxcsVteG', 'my name is bob wall'),
+(3, 'emma','jackson', 'emma.jackson@email.com', '$2a$12$M.IRrvzaUblx/tFCEUUVNe/6zqBoORo38ykxcwYkPLWQsaxcsVteG', 'my name is emma jackson');
 
 
 --
@@ -37,7 +37,7 @@ VALUES
 
 DROP TABLE IF EXISTS `reviews`;
 CREATE TABLE `reviews` (
-`id` int not null,
+`id` int not null  auto_increment,
 `text` varchar(254) NOT NULL,
 `sender_name` varchar(50) NOT NULL,
 `star` int(1) not null,

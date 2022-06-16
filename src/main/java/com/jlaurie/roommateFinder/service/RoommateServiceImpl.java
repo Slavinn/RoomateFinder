@@ -48,4 +48,10 @@ public class RoommateServiceImpl implements RoommateService {
     public void deleteRoommate(int id) throws SQLException {
         roommateDAO.deleteRoommate(id);
     }
+
+    @Override
+    public Roommate findByEmail(String email) {
+        return roommateDAO.findByEmail(email);
+    }
+
 }

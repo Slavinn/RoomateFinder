@@ -28,8 +28,8 @@ public class RoommateRestController {
     }
 
     @GetMapping("/roommates/{roommateId}")
-    public Roommate getRoommate(@PathVariable String roommateId) {
-        Roommate roommate = roommateService.getRoommate(Integer.parseInt(roommateId));
+    public Roommate getRoommate(@PathVariable int roommateId) {
+        Roommate roommate = roommateService.getRoommate(roommateId);
 
         if (roommate == null) {
             throw new RuntimeException("Roommate ID was not found - " + roommateId);
@@ -57,5 +57,17 @@ public class RoommateRestController {
         roommateService.deleteRoommate(id);
 
         return "If that roommate exists, he/she was deleted";
+    }
+
+
+    @GetMapping("/roommates/{email}")
+    public Roommate getRoommateEmail(@PathVariable String email) {
+        Roommate roommate = roommateService.findByEmail(email);
+
+        if (roommate == null) {
+            throw new RuntimeException("Roommate Email was not found - " + email);
+        }
+
+        return roommate;
     }
 }

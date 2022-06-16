@@ -5,45 +5,20 @@ import axios from "axios";
 
 class TutorialDataService {
   getAllUsers() {
-<<<<<<< HEAD
-    return http.get("/roommates");
-  }
-  getRoommateById(id) {
-    return http.get(`/roommates/${id}`);
-=======
     return axios.get("http://localhost:8080/api/roommates");
   }
   getRoommateById(id) {
-    return axios.get(`http://localhost:8080/api/roommates/${id}`,{});
->>>>>>> main
+    return axios.get(`http://localhost:8080/api/roommates/${id}`, {});
   }
   createUser(data) {
-    return axios.post('http://localhost:8080/api/roommates', data);
-  }
-  updateUser(data) {
-    return http.put(`/roommates`, data);
-  }
-  deleteUser(id) {
-    return http.delete(`/${id}`);
-  }
-  getAllReviews(){
-    return http.get('/reviews')
-  }
-  getReviewById(id) {
-    return http.get(`/reviews/${id}`);
+    return axios.post("http://localhost:8080/api/roommates", data);
   }
   createReview(data) {
-<<<<<<< HEAD
-    return axios.post('/review', data);
-=======
-    return axios.post('http://localhost:8080/api/reviews', data);
->>>>>>> main
+    return axios.post("http://localhost:8080/api/reviews", data);
   }
-  updateReview(data) {
-    return http.put(`/reviews`, data);
-  }
-  deleteReview(id) {
-    return http.delete(`/reviews/${id}`);
+
+  getRoommateByEmail(email) {
+    return axios.get(`http://localhost:8080/api/roommates/${email}`);
   }
 }
 export default new TutorialDataService();
