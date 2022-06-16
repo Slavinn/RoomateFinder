@@ -21,4 +21,6 @@ public interface RoommateDAO {
 
     // delete roommate
     public void deleteRoommate(int id) throws SQLException;
+
+    public Roommate findByEmail(String email);
 }

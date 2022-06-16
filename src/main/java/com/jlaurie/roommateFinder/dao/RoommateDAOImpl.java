@@ -62,4 +62,17 @@ public class RoommateDAOImpl implements RoommateDAO{
 
         query.executeUpdate();
     }
+
+
+    @Override
+    public Roommate findByEmail(String email) {
+        Session session = entityManager.unwrap(Session.class);
+
+        Roommate roommate = (Roommate) session.createQuery("from Roommate r where r.email = :email").setParameter("email", email).uniqueResult();
+
+        return roommate;
+
+    }
+
+
 }
