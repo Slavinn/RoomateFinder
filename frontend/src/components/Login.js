@@ -3,6 +3,7 @@ import AuthenticationService from "../AuthenticationService";
 import { Route, useNavigate } from "react-router-dom";
 import DataStorage from "../DataStorage";
 
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,11 +23,13 @@ const Login = () => {
     AuthenticationService.executeJwtAuthenticationService(email, password)
       .then((response) => {
         isValidLogin(true);
+        
+        console.log(response.data.jwtTokenResponse.token)
         AuthenticationService.registerSuccessfulLoginForJwt(
           email,
           response.data.jwtTokenResponse.token
         );
-
+          
         navigate(`/myprofile`, { state: { ...response.data.roommate } });
       })
       .catch((error) => {

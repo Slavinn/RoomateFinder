@@ -3,6 +3,7 @@ package com.jlaurie.roommateFinder.controller;
 import com.jlaurie.roommateFinder.entity.Roommate;
 import com.jlaurie.roommateFinder.service.RoommateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
 public class RoommateRestController {
 
     private RoommateService roommateService;
@@ -20,11 +21,18 @@ public class RoommateRestController {
         this.roommateService = roommateService;
     }
 
-    @PostMapping("/roommates")
+    @PostMapping("/signup")
     public String createRoommate(@RequestBody Roommate roommate) throws SQLException {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        roommate.setPassword(encoder.encode(roommate.getPassword()));
         roommateService.createRoommate(roommate);
 
         return "Created Roommate - " + roommate;
+    }
+    
+    @GetMapping("/roommates")
+    public List<Roommate> selectAllRoommates() {
+        return roommateService.selectAllRoommates();
     }
 
     @GetMapping("/roommates/{roommateId}")
@@ -38,10 +46,7 @@ public class RoommateRestController {
         return roommate;
     }
 
-    @GetMapping("/roommates")
-    public List<Roommate> selectAllRoommates() {
-        return roommateService.selectAllRoommates();
-    }
+    
 
     @PutMapping("/roommates")
     public String updateRoommate(@RequestBody Roommate roommate) throws SQLException {

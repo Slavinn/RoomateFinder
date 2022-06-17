@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "bootstrap";
 import "./index.css";
@@ -13,10 +13,12 @@ import MyProfile from "./components/MyProfile";
 import UserProfile from "./components/UserProfile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AuthenticatedRoute from "./AuthenticationRoute";
+import AuthenticationService from "./AuthenticationService";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <>
+function App(){
+
+
+  return (<>
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -58,5 +60,11 @@ root.render(
       </Routes>
       <Footer />
     </BrowserRouter>
-  </>
+  </>)
+
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <App />
 );
