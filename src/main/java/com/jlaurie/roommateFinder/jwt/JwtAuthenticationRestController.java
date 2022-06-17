@@ -79,14 +79,7 @@ public class JwtAuthenticationRestController {
         }
     }
 
-    @PostMapping("/signup")
-    public String createRoommate(@RequestBody Roommate roommate) throws SQLException {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        roommate.setPassword(encoder.encode(roommate.getPassword()));
-        roommateService.createRoommate(roommate);
-
-        return "Created Roommate - " + roommate;
-    }
+    
 
     @GetMapping("/login/{email}")
     public Roommate getRoommateEmail(@PathVariable String email) {

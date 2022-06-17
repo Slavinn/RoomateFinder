@@ -24,7 +24,12 @@ console.log(JSON.stringify(current_user))
     <h1>{localStorage.getItem("user")} {localStorage.getItem("lastName")}</h1>
     <p>{localStorage.getItem("summary")}</p>
     <h3>email: {localStorage.getItem("email")}</h3>
-    <h2>Reviews</h2>
-    {/* {reviews} */}
+    <h2>Edit User Info</h2>
+    <form>
+      <textarea placeholder="Enter Summary" defaultValue={localStorage.getItem("summary")} style={{"width":"100%","height":"50px"}}
+     />
+       <input placeholder="Email" type="email"/>
+    <input type="submit" className="submit-btn"/>
+    </form>
   </div>;
 }

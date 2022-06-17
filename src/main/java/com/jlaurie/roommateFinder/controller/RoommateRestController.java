@@ -22,6 +22,15 @@ public class RoommateRestController {
         this.roommateService = roommateService;
     }
 
+    
+    @PostMapping("/signup")
+    public String createRoommate(@RequestBody Roommate roommate) throws SQLException {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        roommate.setPassword(encoder.encode(roommate.getPassword()));
+        roommateService.createRoommate(roommate);
+
+        return "Created Roommate - " + roommate;
+    }
 
 
     
