@@ -23,6 +23,7 @@ class AuthenticationService {
   }
 
   logout() {
+    localStorage.clear();
     sessionStorage.removeItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
   }
 

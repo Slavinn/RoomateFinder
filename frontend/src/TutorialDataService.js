@@ -18,7 +18,7 @@ class TutorialDataService {
   }
 
   getRoommateByEmail(email) {
-    return axios.get(`http://localhost:8080/api/roommates/${email}`);
+    return axios.get(`http://localhost:8080/login/${email}`);
   }
 }
 export default new TutorialDataService();
