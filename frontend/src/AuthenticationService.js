@@ -13,12 +13,8 @@ class AuthenticationService {
   }
 
   createJwtAuthToken(token) {
+    // localStorage.setItem("token", "Bearer " + token)
     return "Bearer " + token;
-  }
-
-  registerSuccessfulLogin(email, password) {
-    sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, email);
-    this.setupAxiosInterceptor(this.createBasicAuthToken(email, password));
   }
 
   registerSuccessfulLoginForJwt(email, token) {

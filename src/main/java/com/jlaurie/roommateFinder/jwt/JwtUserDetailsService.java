@@ -21,7 +21,6 @@ public class JwtUserDetailsService implements UserDetailsService {
   public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
     Roommate roommate = roommateService.findByEmail(email);
-    System.out.println(roommate);
     if (roommate == null) {
       throw new UsernameNotFoundException("User not found with username: " + email);
     }

@@ -16,10 +16,12 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 
@@ -77,6 +79,27 @@ public class JwtAuthenticationRestController {
         }
     }
 
+    @PostMapping("/signup")
+    public String createRoommate(@RequestBody Roommate roommate) throws SQLException {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        roommate.setPassword(encoder.encode(roommate.getPassword()));
+        roommateService.createRoommate(roommate);
+
+        return "Created Roommate - " + roommate;
+    }
+
+    @GetMapping("/login/{email}")
+    public Roommate getRoommateEmail(@PathVariable String email) {
+        Roommate roommate = roommateService.findByEmail(email);
+
+        if (roommate == null) {
+            throw new RuntimeException("Roommate Email was not found - " + email);
+        }
+
+        return roommate;
+    }
+
+
     @ExceptionHandler({AuthenticationException.class})
     public ResponseEntity<String> handleAuthenticationException(AuthenticationException e) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
@@ -94,4 +117,5 @@ public class JwtAuthenticationRestController {
             throw new AuthenticationException("INVALID_CREDENTIALS", e);
         }
     }
+
 }
