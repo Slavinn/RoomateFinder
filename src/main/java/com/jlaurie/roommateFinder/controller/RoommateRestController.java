@@ -1,5 +1,6 @@
 package com.jlaurie.roommateFinder.controller;
 
+import com.jlaurie.roommateFinder.entity.Review;
 import com.jlaurie.roommateFinder.entity.Roommate;
 import com.jlaurie.roommateFinder.service.RoommateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class RoommateRestController {
 
     private RoommateService roommateService;
@@ -21,19 +22,14 @@ public class RoommateRestController {
         this.roommateService = roommateService;
     }
 
-    @PostMapping("/signup")
-    public String createRoommate(@RequestBody Roommate roommate) throws SQLException {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        roommate.setPassword(encoder.encode(roommate.getPassword()));
-        roommateService.createRoommate(roommate);
 
-        return "Created Roommate - " + roommate;
-    }
+
     
     @GetMapping("/roommates")
     public List<Roommate> selectAllRoommates() {
         return roommateService.selectAllRoommates();
     }
+
 
     @GetMapping("/roommates/{roommateId}")
     public Roommate getRoommate(@PathVariable int roommateId) {
@@ -56,23 +52,14 @@ public class RoommateRestController {
         return "Updated roommate - " + roommate;
     }
 
-    @DeleteMapping("/roommates/{id}")
-    public String deleteRoommate(@PathVariable int id) throws SQLException {
+    @DeleteMapping("/roommates/{roommateId}")
+    public String deleteRoommate(@PathVariable int roommateId) throws SQLException {
 
-        roommateService.deleteRoommate(id);
+        roommateService.deleteRoommate(roommateId);
 
         return "If that roommate exists, he/she was deleted";
     }
 
 
-    @GetMapping("/roommates/{email}")
-    public Roommate getRoommateEmail(@PathVariable String email) {
-        Roommate roommate = roommateService.findByEmail(email);
 
-        if (roommate == null) {
-            throw new RuntimeException("Roommate Email was not found - " + email);
-        }
-
-        return roommate;
-    }
 }

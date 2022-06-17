@@ -11,7 +11,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-`id` int(11) not null auto_increment,
+`id` int not null auto_increment,
 `first_name` varchar(50) not null,
 `last_name` varchar(50) not null,
 `email` varchar(50) UNIQUE not null,
